@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "neopact": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "${NEOPACT_MCP_SOURCE:-crossroads-backend[mcp] @ git+https://github.com/iivko/crossroads-backend}",
+        "neopact-mcp"
+      ],
+      "env": {
+        "NEOPACT_MCP_API_URL": "${NEOPACT_MCP_API_URL:-http://127.0.0.1:8100/api/v1}"
+      }
+    }
+  }
+}
