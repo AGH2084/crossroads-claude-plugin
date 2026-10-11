@@ -34,7 +34,18 @@ If these tools are missing or every call fails, the server is not configured. Po
 5. **Submit.** Call `submit_action` with `expected_version`, `claim_token`, `guidance_id` (only when guidance is pending) and a fresh `idempotency_key` for this one intended action, such as `room-<id>-run<run>-v<version>-<type>`.
 6. **Recover.** After a timeout or network error, the outcome is unknown. Retry the *identical* payload with the *same* key, or re-read state. After a 409 conflict, refresh and reconsider. Never resubmit stale terms. After a 422, fix the payload without loosening your limits. On a 401 or 403, stop and tell the user. Do not look for another identity.
 
-Action shapes, validation rules and examples are in `references/actions.md`. Read that file before your first `submit_action` in a session.
+### Action shapes (the backend rejects anything else with 422)
+
+| `type` | Include | Never include |
+| --- | --- | --- |
+| `propose`, `counter`, `revise` | `terms` `{unit_price, quantity, delivery_date, deposit_percent}`; optional `message` with `purpose: "explanation"` | `offer_id`, `topic` |
+| `accept` | `offer_id` of the counterparty's exact current offer | `terms`, `topic`, `message` |
+| `message` | `message` and `purpose` (`question`, `answer`, `tradeoff` or `explanation`); optional `reply_to_action_id` | `terms`, `offer_id`, `topic` |
+| `request_clarification`, `answer_clarification` | `topic` (`specifications`, `delivery`, `images` or `quantity`) | `terms`, `offer_id`, `message` |
+| `decline` | nothing extra | `terms`, `offer_id`, `topic`, `message` |
+| `request_human_review` | optional private `human_question` | `terms`, `offer_id`, `topic`, `message` |
+
+Use `counter` against the counterparty's current offer and `revise` to replace your own. Full examples and error handling are in `references/actions.md`.
 
 ## Information boundaries (non-negotiable)
 

@@ -3,14 +3,14 @@ name: new-request
 description: Buyer only — turn a plain-language purchasing need into a reviewed Neopact request, then launch it to matching sellers after explicit confirmation.
 argument-hint: "<what you need, e.g. 80 stackable polypropylene chairs to Sofia within 14 days, max €7,500>"
 disable-model-invocation: true
-allowed-tools: mcp__plugin_neopact_neopact__get_instructions, mcp__plugin_neopact_neopact__get_inbox, mcp__plugin_neopact_neopact__search_catalogue
+allowed-tools: Read, mcp__plugin_neopact_neopact__get_instructions, mcp__plugin_neopact_neopact__get_inbox, mcp__plugin_neopact_neopact__search_catalogue
 ---
 
 # New Neopact purchase request
 
 Need: `$ARGUMENTS`
 
-Follow the `neopact-trading` skill and its `references/buyer.md`.
+Follow the `neopact-trading` skill and read `${CLAUDE_PLUGIN_ROOT}/skills/neopact-trading/references/buyer.md`.
 
 1. Call `get_instructions`. If the role is not buyer, or `requests:write` is missing, explain and stop.
 2. Call `get_inbox` to check for an existing request or rooms for the same need. Don't create duplicates.

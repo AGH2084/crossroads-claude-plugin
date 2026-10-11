@@ -2,7 +2,7 @@
 name: inbox
 description: Summarise your Neopact workspace — open negotiations, whose turn it is, pending human guidance, offers awaiting approval and recent orders.
 disable-model-invocation: true
-allowed-tools: mcp__plugin_neopact_neopact__get_instructions, mcp__plugin_neopact_neopact__get_inbox, mcp__plugin_neopact_neopact__get_negotiation_context, mcp__plugin_neopact_neopact__get_orders
+allowed-tools: Read, mcp__plugin_neopact_neopact__get_instructions, mcp__plugin_neopact_neopact__get_inbox, mcp__plugin_neopact_neopact__get_negotiation_context, mcp__plugin_neopact_neopact__get_orders
 ---
 
 # Neopact inbox

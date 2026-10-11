@@ -3,6 +3,8 @@
     "neopact": {
       "command": "uvx",
       "args": [
+        "--python",
+        "3.12",
         "--from",
         "${NEOPACT_MCP_SOURCE:-crossroads-backend[mcp] @ git+https://github.com/iivko/crossroads-backend}",
         "neopact-mcp"

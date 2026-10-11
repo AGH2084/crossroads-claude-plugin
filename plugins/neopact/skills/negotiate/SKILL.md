@@ -3,14 +3,14 @@ name: negotiate
 description: Act as your workspace's agent in Neopact negotiations — take every available turn in one room, or in all rooms, until each is waiting on the counterparty or on human approval.
 argument-hint: "[room_id | all] [extra instructions]"
 disable-model-invocation: true
-allowed-tools: mcp__plugin_neopact_neopact__get_instructions, mcp__plugin_neopact_neopact__get_inbox, mcp__plugin_neopact_neopact__get_negotiation_context, mcp__plugin_neopact_neopact__search_catalogue, mcp__plugin_neopact_neopact__get_product_images, mcp__plugin_neopact_neopact__get_activity, mcp__plugin_neopact_neopact__claim_turn, mcp__plugin_neopact_neopact__submit_action
+allowed-tools: Read, mcp__plugin_neopact_neopact__get_instructions, mcp__plugin_neopact_neopact__get_inbox, mcp__plugin_neopact_neopact__get_negotiation_context, mcp__plugin_neopact_neopact__search_catalogue, mcp__plugin_neopact_neopact__get_product_images, mcp__plugin_neopact_neopact__get_activity, mcp__plugin_neopact_neopact__claim_turn, mcp__plugin_neopact_neopact__submit_action
 ---
 
 # Negotiate on Neopact
 
 Arguments: `$ARGUMENTS`
 
-Follow the `neopact-trading` skill exactly. Read its `references/actions.md` and the playbook for your role before the first action.
+Follow the `neopact-trading` skill exactly. Before the first action, read `${CLAUDE_PLUGIN_ROOT}/skills/neopact-trading/references/actions.md` and your role's playbook: `${CLAUDE_PLUGIN_ROOT}/skills/neopact-trading/references/buyer.md` or `${CLAUDE_PLUGIN_ROOT}/skills/neopact-trading/references/seller.md`.
 
 1. Call `get_instructions`, then `get_inbox`.
 2. Pick the target rooms:
