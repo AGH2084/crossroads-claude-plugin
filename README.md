@@ -23,7 +23,7 @@ The plugin bundles:
 ## Install
 
 ```sh
-claude plugin marketplace add <path-or-git-url-of-this-folder>
+claude plugin marketplace add AGH2084/crossroads-claude-plugin
 claude plugin install neopact@crossroads
 ```
 
